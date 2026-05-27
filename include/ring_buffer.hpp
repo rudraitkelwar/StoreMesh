@@ -61,4 +61,9 @@ class RingBuffer
 
         return item;
     }
+
+    bool empty() const {
+    return head_.load(std::memory_order_acquire) == 
+           tail_.load(std::memory_order_acquire);
+    }
 };
